@@ -33,6 +33,7 @@ urlpatterns = [
     path('add_debitnote',views.add_debitnote,name='add_debitnote'),
     path('edit_debitnote_page',views.edit_debitnote_page,name='edit_debitnote_page'),
     path('view_debitnotepage',views.view_debitnotepage,name='view_debitnotepage'),
+    path('add_newparty',views.add_newparty,name='add_newparty'),
    
 
 ]

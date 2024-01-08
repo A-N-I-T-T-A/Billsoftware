@@ -337,3 +337,25 @@ def edit_debitnote_page(request):
    return render(request,'company/edit_debitnote.html')
 def view_debitnotepage(request):
    return render(request,'company/view_debitnote.html')
+
+def add_newparty(request):
+  if request.method == "POST":
+    staff_id = request.session['staff_id']
+    staff =  staff_details.objects.get(id=staff_id)
+    cid= staff.company.id
+    cmp=company.objects.get(id=cid)
+    name=request.POST['partyname']
+    ph=request.POST['mobilenumber']
+    gst=request.POST['gstin']
+    gst_type=request.POST['gstintype']
+    state=request.POST['state']
+    email=request.POST['email']
+    date=request.POST['date']
+    address=request.POST['address']
+    balance=request.POST['balance']
+
+    p=Parties(party_name=name,phone_number=ph,gstin=gst,gst_type=gst_type,billing_address=address,state=state,email=email,opening_balance=balance,company=cmp,staff=staff,date=date)
+    p.save()
+    return render(request,'company/add_debitnote.html')
+
+      
